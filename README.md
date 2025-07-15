@@ -1,5 +1,7 @@
 # TransEvalnia
 
+![System diagram](https://github.com/SakanaAI/TransEvalnia/blob/main/system.png)
+
 TransEvalnia is a prompting-based translation evaluation and ranking system that
 uses reasoning in performing its evaluations and ranking. The system presents
 fine-grained evaluations based on a subset of the Multidimensional Quality
