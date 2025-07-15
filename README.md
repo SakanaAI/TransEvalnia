@@ -40,8 +40,7 @@ See the script `scripts/ordering_bias.py`
 # Data from HuggingFace
 
 The main set of data can be obtained at
-
-`https://huggingface.co/datasets/SakanaAI/TransEvalnia`
+[https://huggingface.co/datasets/SakanaAI/TransEvalnia](https://huggingface.co/datasets/SakanaAI/TransEvalnia).
 
 # Other tools
 
