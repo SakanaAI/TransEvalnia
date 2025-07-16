@@ -3,6 +3,5 @@ bitsandbytes
 boto3
 jinja2
 jsonlines
-levenshtein
 openai
 vllm
