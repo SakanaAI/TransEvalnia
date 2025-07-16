@@ -43,3 +43,6 @@ See the script `scripts/ordering_bias.py`
 
 The main set of data can be obtained at
 [https://huggingface.co/datasets/SakanaAI/TransEvalnia](https://huggingface.co/datasets/SakanaAI/TransEvalnia).
+
+The script `scripts/download_dataset.py` downloads the datasets used in the
+paper from HuggingFace to the local, in the same format as the sample data.

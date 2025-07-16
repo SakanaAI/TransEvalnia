@@ -1,6 +1,7 @@
 absl-py
 bitsandbytes
 boto3
+datasets
 jinja2
 jsonlines
 openai
