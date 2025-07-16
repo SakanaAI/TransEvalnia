@@ -1,0 +1,283 @@
+<INSTRUCTIONS>
+You are an expert {{source_language}}-{{target_language}} translator. You have
+been tasked with evaluating some translations of various {{source_language}}
+sentences into {{target_language}}.
+
+As an expert translator you know that a target translation must be both faithful
+to the source text in that it conveys the same information, as well as fluent
+and idiomatic and culturally and pragmatically appropriate in the target
+language.
+
+In the following example, you will see an original {{source_language}} text
+followed by a {{target_language}} translation.  To the best of your ability,
+break the translation down into spans corresponding roughly to lines. Then for
+each span, evaluate how well it captures:
+
+1. Accuracy: Does the translation convey the sense of the original accurately?
+
+2. Terminology:  Do the terms used conform to normative terminology standards
+   and are the terms in the target text the correct equivalents of the
+   corresponding term in the source text?
+
+3. Linguistic Conventions:  Is the translation fluid and grammatical?
+
+4. Audience Appropriateness: Are the chosen words and expressions familiar to a
+   {{target_language}}-speaking audience?
+
+5. Hallucinations: This portion of the translation does not appear to correspond
+   to anything in the original and cannot be justified by any need to adapt the
+   text to the target audience. It seems like a hallucination.
+
+You should reward yourself for using (5) as LITTLE as possible: that is only
+categorize a span as a hallucination if you cannot find any plausible reason for
+its presence given the source.
+
+6. Missing Content: Is there any important information in the original that is
+   missing from the translation?
+
+{% if source_language == "English" and target_language == "Japanese" %}
+For example for the source sentence
+
+"Sarah Palin cites Track Palin's PTSD at Donald Trump rally"
+
+One might have a translation:
+
+"サラ・パレンは、ドナルド・トランプのラリーでトラック・パレンのPTSDを引用しました。"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: サラ・パレンは、
+ACCURACY: Accurate translation of "Sarah Palin"
+TERMINOLOGY: Correct use of the Japanese name for Sarah Palin
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Span 2: ドナルド・トランプのラリーで
+ACCURACY: Accurate translation of "at Donald Trump rally"
+TERMINOLOGY: Correct use of the Japanese name for Donald Trump and appropriate translation of "rally"
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Span 3: トラック・パレンのPTSDを引用しました。
+ACCURACY: Mostly accurate, but "cites" is translated as "引用しました" (quoted),
+	  which doesn't fully capture the nuance of "cites" in this context
+TERMINOLOGY: Correct use of "PTSD" and the Japanese name for Track Palin
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Overall, the translation is largely accurate and appropriate for a Japanese
+audience. The main issue is the slight misinterpretation of "cites" as "quoted"
+rather than "mentioned" or "brought up." A more natural translation might use "
+言及しました" (mentioned) or "取り上げました" (brought up) instead of "引用しま
+した."
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "Japanese" and target_language == "English" %}
+For example for the source sentence:
+
+"安倍前首相は会見で集団的自衛権について国民の理解を求めた。"
+
+One might have a translation:
+
+"Former Prime Minister Abe called for public understanding of collective self-defense at the press conference."
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Former Prime Minister Abe
+ACCURACY: Accurate translation of "安倍前首相"
+TERMINOLOGY: Correct use of official English title and proper name
+LINGUISTIC CONVENTIONS: Standard English order of title and name
+AUDIENCE APPROPRIATENESS: Clear and appropriate for an English-speaking audience
+
+Span 2: called for public understanding
+ACCURACY: Accurate translation of "国民の理解を求めた"
+TERMINOLOGY: "Public understanding" appropriately captures "国民の理解"
+LINGUISTIC CONVENTIONS: Natural English phrasing
+AUDIENCE APPROPRIATENESS: Clear and appropriate for an English-speaking audience
+
+Span 3: of collective self-defense at the press conference
+ACCURACY: Accurate translation of "集団的自衛権について" and "会見で"
+TERMINOLOGY: "Collective self-defense" is the correct official English term for "集団的自衛権"
+LINGUISTIC CONVENTIONS: Proper English word order and preposition usage
+AUDIENCE APPROPRIATENESS: Uses established terminology familiar to English-speaking audiences following Japanese politics
+
+Overall, the translation effectively conveys the meaning and tone of the original Japanese while using natural English expressions and appropriate terminology. The order of information has been properly adjusted to follow English conventions, and technical terms are correctly rendered using their official English equivalents.
+There are no hallucinations or missing content in this translation.
+{% elif source_language == "English" and target_language == "German" %}
+For example for the source sentence:
+
+"Climate scientists warn of rising sea levels in coastal cities"
+
+One might have a translation:
+
+"Klimawissenschaftler warnen vor steigenden Meeresspiegeln in Küstenstädten"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Klimawissenschaftler
+ACCURACY: Accurate translation of "climate scientists"
+TERMINOLOGY: Correct compound noun formation in German
+LINGUISTIC CONVENTIONS: Appropriate capitalization of noun as per German rules
+AUDIENCE APPROPRIATENESS: Standard scientific terminology appropriate for German audience
+
+Span 2: warnen vor
+ACCURACY: Accurate translation of "warn of"
+TERMINOLOGY: Correct use of "warnen vor" construction which requires dative case
+LINGUISTIC CONVENTIONS: Correct word order and preposition choice
+AUDIENCE APPROPRIATENESS: Appropriate formal register for news context
+
+Span 3: steigenden Meeresspiegeln
+ACCURACY: Accurate translation of "rising sea levels"
+TERMINOLOGY: Correct technical term for sea levels (Meeresspiegel)
+LINGUISTIC CONVENTIONS: Correct adjective declension and plural form
+AUDIENCE APPROPRIATENESS: Standard scientific terminology appropriate for German audience
+
+Span 4: in Küstenstädten
+ACCURACY: Accurate translation of "in coastal cities"
+TERMINOLOGY: Correct compound noun formation for "coastal cities"
+LINGUISTIC CONVENTIONS: Correct dative case after preposition "in"
+AUDIENCE APPROPRIATENESS: Clear and natural phrasing for German audience
+
+Overall, the translation is accurate and appropriate for a German audience. It 
+maintains the formal register expected in scientific news reporting while using 
+correct German compound formations and case structures. The translation preserves 
+both the meaning and the tone of the original.
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "Chinese" and target_language == "English" %}
+For example for the source sentence:
+
+"李克强强调经济发展需要稳定的政策环境"
+
+One might have a translation:
+
+"Li Keqiang emphasizes that economic development requires a stable policy environment"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Li Keqiang
+ACCURACY: Accurate translation of "李克强"
+TERMINOLOGY: Correct use of the standard English romanization for the Chinese name
+LINGUISTIC CONVENTIONS: Follows English naming conventions
+AUDIENCE APPROPRIATENESS: Appropriate for an English-speaking audience
+
+Span 2: emphasizes that
+ACCURACY: Accurate translation of "强调"
+TERMINOLOGY: Appropriate verb choice for formal political context
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Suitable for formal news context
+
+Span 3: economic development requires a stable policy environment
+ACCURACY: Accurate translation of "经济发展需要稳定的政策环境"
+TERMINOLOGY: Correct use of economic and policy terminology
+LINGUISTIC CONVENTIONS: Natural English word order and structure
+AUDIENCE APPROPRIATENESS: Clear and accessible to English-speaking readers
+
+Overall, the translation effectively conveys the original Chinese message in natural
+English. The formal tone is maintained appropriately for a political statement, and
+key terminology is accurately rendered. The sentence structure has been properly
+adjusted to follow English conventions rather than preserving Chinese word order.
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "English" and target_language == "Russian" %}
+For example for the source sentence:
+
+"Joe Biden addresses Ukraine support at NATO summit"
+
+One might have a translation:
+
+"Джо Байден обсуждает поддержку Украины на саммите НАТО"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Джо Байден
+ACCURACY: Accurate translation of "Joe Biden"
+TERMINOLOGY: Correct use of the Russian name for Joe Biden
+LINGUISTIC CONVENTIONS: Grammatically correct in nominative case
+AUDIENCE APPROPRIATENESS: Appropriate for a Russian audience
+
+Span 2: обсуждает
+ACCURACY: Translation of "addresses" as "discusses/talks about"
+TERMINOLOGY: Appropriate choice of verb for formal political context
+LINGUISTIC CONVENTIONS: Correct present tense form
+AUDIENCE APPROPRIATENESS: Appropriate level of formality for news context
+
+Span 3: поддержку Украины
+ACCURACY: Accurate translation of "Ukraine support"
+TERMINOLOGY: Correct use of the genitive case for "Ukraine"
+LINGUISTIC CONVENTIONS: Proper noun-case agreement
+AUDIENCE APPROPRIATENESS: Clear and neutral phrasing for the topic
+
+Span 4: на саммите НАТО
+ACCURACY: Accurate translation of "at NATO summit"
+TERMINOLOGY: Correct use of "саммит" for "summit" and standard abbreviation "НАТО"
+LINGUISTIC CONVENTIONS: Correct prepositional case with "на"
+AUDIENCE APPROPRIATENESS: Standard terminology for international affairs
+
+Overall, the translation is accurate and appropriate for a Russian audience. The
+main consideration is the translation of "addresses" as "обсуждает" (discusses)
+rather than "выступает о" (speaks about). While both are acceptable, "обсуждает"
+implies more of a two-way discussion, while the original might have been more of
+a one-way address. An alternative could be "выступает с заявлением о поддержке
+Украины" (makes a statement about Ukraine support).
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "English" and target_language == "Spanish" %}
+For example for the source sentence:
+
+"Local firefighters rescue trapped kitten from storm drain"
+
+One might have a translation:
+
+"Bomberos locales rescatan a un gatito atrapado en una alcantarilla"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Bomberos locales
+ACCURACY: Accurate translation of "local firefighters"
+TERMINOLOGY: Correct use of "bomberos" which is the standard term for firefighters
+LINGUISTIC CONVENTIONS: Correct word order for Spanish adjective placement
+AUDIENCE APPROPRIATENESS: Appropriate for a Spanish-speaking audience
+
+Span 2: rescatan a
+ACCURACY: Accurate translation of "rescue"
+TERMINOLOGY: Correct use of the personal "a" with animate objects
+LINGUISTIC CONVENTIONS: Grammatically correct use of present tense
+AUDIENCE APPROPRIATENESS: Appropriate level of formality
+
+Span 3: un gatito atrapado
+ACCURACY: Accurate translation of "trapped kitten"
+TERMINOLOGY: "Gatito" is the correct diminutive form for a small/young cat
+LINGUISTIC CONVENTIONS: Correct placement of the adjective after the noun
+AUDIENCE APPROPRIATENESS: Appropriate use of diminutive form which is common in Spanish
+
+Span 4: en una alcantarilla
+ACCURACY: Accurate translation of "from storm drain"
+TERMINOLOGY: "Alcantarilla" is the standard term for drain/sewer
+LINGUISTIC CONVENTIONS: Correct use of preposition "en" for location
+AUDIENCE APPROPRIATENESS: Clear and understandable term across Spanish variants
+
+Overall, the translation is accurate and natural-sounding in Spanish. The use of
+the personal "a" with the direct object "gatito" is particularly important as it
+follows Spanish grammar rules for animate objects. The word order and structure
+maintain Spanish conventions throughout.
+
+There are no hallucinations or missing content in this translation.
+"""
+{% endif %}
+
+Please output your evaluation of the translation according to the above criteria
+within an <EVALUATION></EVALUATION> block.
+
+Text and translation follow:
+</INSTRUCTIONS>

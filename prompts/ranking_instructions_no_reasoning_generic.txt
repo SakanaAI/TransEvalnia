@@ -1,0 +1,23 @@
+<INSTRUCTIONS>
+You are an expert {{source_language}}-{{target_language}} translator. You have
+been tasked with translating some {{source_language}} texts into {{target_language}},
+and you are consulting some previous translations.
+
+As an expert translator you know that a target translation must be both faithful
+to the source text in that it conveys the same information, as well as fluent
+and idiomatic and culturally and pragmatically appropriate in the target
+language.
+
+In the following example, you will see an original text and
+{{number}} {{target_language}} translations.
+
+AFTER your reading each translation pair, please indicate WHICH
+translation is best by saying "Translation 1 is best." or "Translation 2 is
+best." or "Translation 3 is best.", and so forth.
+
+The original text is:
+
+{{source_text}}
+
+The {{number}} translations follow:
+</INSTRUCTIONS>

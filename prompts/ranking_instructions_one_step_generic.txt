@@ -1,0 +1,278 @@
+<INSTRUCTIONS>
+You are an expert {{source_language}}-{{target_language}} translator. You have
+been tasked with translating some {{source_language}} texts into {{target_language}},
+and you are consulting some previous translations.
+
+As an expert translator you know that a target translation must be both faithful
+to the source text in that it conveys the same information, as well as fluent
+and idiomatic and culturally and pragmatically appropriate in the target
+language.
+
+In the following example, you will see an original text and
+{{number}} {{target_language}} translations. For each translation, to the best
+of your ability, break the translation down into spans corresponding roughly to
+lines. Then for each span, evaluate how well it captures:
+
+1. Accuracy: Does the translation convey the sense of the original accurately?
+
+2. Terminology:  Do the terms used conform to normative terminology standards
+   and are the terms in the target text the correct equivalents of the
+   corresponding term in the source text?
+
+3. Linguistic Conventions:  Is the translation fluid and grammatical?
+
+4. Audience Appropriateness: Are the chosen words and expressions familiar to a
+   {{target_language}}-speaking audience?
+
+5. Hallucinations: This portion of the translation does not appear to correspond
+   to anything in the original and cannot be justified by any need to adapt the
+   text to the target audience. It seems like a hallucination.
+
+You should reward yourself for using (5) as LITTLE as possible: that is only
+categorize a span as a hallucination if you cannot find any plausible reason for
+its presence given the source.
+
+6. Missing Content: Is there any important information in the original that is
+   missing from the translation?
+
+{% if source_language == "English" and target_language == "Japanese" %}
+For example for the source sentence
+
+"Sarah Palin cites Track Palin's PTSD at Donald Trump rally"
+
+One might have a translation:
+
+"サラ・パレンは、ドナルド・トランプのラリーでトラック・パレンのPTSDを引用しました。"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: サラ・パレンは、
+ACCURACY: Accurate translation of "Sarah Palin"
+TERMINOLOGY: Correct use of the Japanese name for Sarah Palin
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Span 2: ドナルド・トランプのラリーで
+ACCURACY: Accurate translation of "at Donald Trump rally"
+TERMINOLOGY: Correct use of the Japanese name for Donald Trump and appropriate translation of "rally"
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Span 3: トラック・パレンのPTSDを引用しました。
+ACCURACY: Mostly accurate, but "cites" is translated as "引用しました" (quoted),
+	  which doesn't fully capture the nuance of "cites" in this context
+TERMINOLOGY: Correct use of "PTSD" and the Japanese name for Track Palin
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Overall, the translation is largely accurate and appropriate for a Japanese
+audience. The main issue is the slight misinterpretation of "cites" as "quoted"
+rather than "mentioned" or "brought up." A more natural translation might use "
+言及しました" (mentioned) or "取り上げました" (brought up) instead of "引用しま
+した."
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "Japanese" and target_language == "English" %}
+For example for the source sentence:
+
+"安倍前首相は会見で集団的自衛権について国民の理解を求めた。"
+
+One might have a translation:
+
+"Former Prime Minister Abe called for public understanding of collective self-defense at the press conference."
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Former Prime Minister Abe
+ACCURACY: Accurate translation of "安倍前首相"
+TERMINOLOGY: Correct use of official English title and proper name
+LINGUISTIC CONVENTIONS: Standard English order of title and name
+AUDIENCE APPROPRIATENESS: Clear and appropriate for an English-speaking audience
+
+Span 2: called for public understanding
+ACCURACY: Accurate translation of "国民の理解を求めた"
+TERMINOLOGY: "Public understanding" appropriately captures "国民の理解"
+LINGUISTIC CONVENTIONS: Natural English phrasing
+AUDIENCE APPROPRIATENESS: Clear and appropriate for an English-speaking audience
+
+Span 3: of collective self-defense at the press conference
+ACCURACY: Accurate translation of "集団的自衛権について" and "会見で"
+TERMINOLOGY: "Collective self-defense" is the correct official English term for "集団的自衛権"
+LINGUISTIC CONVENTIONS: Proper English word order and preposition usage
+AUDIENCE APPROPRIATENESS: Uses established terminology familiar to English-speaking audiences following Japanese politics
+
+Overall, the translation effectively conveys the meaning and tone of the original Japanese while using natural English expressions and appropriate terminology. The order of information has been properly adjusted to follow English conventions, and technical terms are correctly rendered using their official English equivalents.
+There are no hallucinations or missing content in this translation.
+{% elif source_language == "English" and target_language == "German" %}
+For example for the source sentence:
+
+"Climate scientists warn of increasing extreme weather events"
+
+One might have a translation:
+
+"Klimawissenschaftler warnen vor zunehmenden extremen Wetterereignissen"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Klimawissenschaftler
+ACCURACY: Accurate translation of "climate scientists"
+TERMINOLOGY: Correct compound noun formation in German
+LINGUISTIC CONVENTIONS: Grammatically correct nominative plural form
+AUDIENCE APPROPRIATENESS: Appropriate for a German audience
+
+Span 2: warnen vor
+ACCURACY: Accurate translation of "warn of"
+TERMINOLOGY: Correct use of "warnen vor" construction which requires dative case
+LINGUISTIC CONVENTIONS: Correct word order and preposition choice
+AUDIENCE APPROPRIATENESS: Appropriate level of formality for news context
+
+Span 3: zunehmenden extremen Wetterereignissen
+ACCURACY: Accurate translation of "increasing extreme weather events"
+TERMINOLOGY: Correct technical term "Wetterereignisse" with proper compound formation
+LINGUISTIC CONVENTIONS: Correct adjective declension and dative case after "vor"
+AUDIENCE APPROPRIATENESS: Appropriate scientific terminology for German audience
+
+Overall, the translation is accurate and maintains appropriate formal tone for a
+German news or scientific context. The German translation actually improves on
+the English by using the established compound noun "Wetterereignisse" instead of
+the more basic "weather events."
+
+There are no hallucinations or missing content in this translation. The German
+version preserves both the warning aspect and the scientific context of the
+original while following German grammatical conventions for case and word order.
+"""
+{% elif source_language == "Chinese" and target_language == "English" %}
+For example for the source sentence:
+
+"李克强在全国经济工作会议上强调创新发展重要性"
+
+One might have a translation:
+
+"Li Keqiang emphasizes the importance of innovative development at the National Economic Work Conference"
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Li Keqiang
+ACCURACY: Accurate translation of "李克强"
+TERMINOLOGY: Correct use of the standard English romanization for the Chinese name
+LINGUISTIC CONVENTIONS: Follows English name order conventions
+AUDIENCE APPROPRIATENESS: Appropriate for an English-speaking audience
+
+Span 2: emphasizes the importance of innovative development
+ACCURACY: Accurate translation of "强调创新发展重要性"
+TERMINOLOGY: "创新发展" appropriately rendered as "innovative development"
+LINGUISTIC CONVENTIONS: Natural English syntax and word choice
+AUDIENCE APPROPRIATENESS: Clear and comprehensible for English speakers
+
+Span 3: at the National Economic Work Conference
+ACCURACY: Accurate translation of "在全国经济工作会议上"
+TERMINOLOGY: Correct use of the standard English name for "全国经济工作会议"
+LINGUISTIC CONVENTIONS: Proper preposition usage and word order
+AUDIENCE APPROPRIATENESS: Appropriate level of formality for official context
+
+Overall, the translation effectively conveys the original Chinese message to an
+English-speaking audience. The formal tone is maintained appropriately, and key
+terminology is rendered accurately. The sentence structure has been naturally
+adapted from Chinese to English conventions.
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "English" and target_language == "Russian" %}
+For example, for the source sentence:
+
+"Sarah Palin cites Track Palin's PTSD at Donald Trump rally"
+
+One might have a translation:
+
+"Сара Пэйлин упомянула о ПТСР Трэка Пэйлина на митинге Дональда Трампа."
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: Сара Пэйлин
+ACCURACY: Accurate translation of "Sarah Palin"
+TERMINOLOGY: Correct use of the Russian name for Sarah Palin
+LINGUISTIC CONVENTIONS: Grammatically correct with proper transliteration
+AUDIENCE APPROPRIATENESS: Appropriate for a Russian audience
+
+Span 2: упомянула о
+ACCURACY: Good translation of "cites" that captures the meaning in this context
+TERMINOLOGY: "упомянула о" (mentioned) is an appropriate term for this context
+LINGUISTIC CONVENTIONS: Correct use of the preposition "о" after "упомянула"
+AUDIENCE APPROPRIATENESS: Natural expression in Russian
+
+Span 3: ПТСР Трэка Пэйлина
+ACCURACY: Accurate translation of "Track Palin's PTSD"
+TERMINOLOGY: Correct use of "ПТСР" (Russian abbreviation for PTSD) and proper transliteration of "Track Palin"
+LINGUISTIC CONVENTIONS: Correct genitive case usage
+AUDIENCE APPROPRIATENESS: Appropriate for a Russian audience
+
+Span 4: на митинге Дональда Трампа
+ACCURACY: Accurate translation of "at Donald Trump rally"
+TERMINOLOGY: Correct use of "митинг" for "rally" and proper transliteration of "Donald Trump"
+LINGUISTIC CONVENTIONS: Correct use of prepositional case with "на" and genitive case for "Дональда Трампа"
+AUDIENCE APPROPRIATENESS: Appropriate for a Russian audience
+
+Overall, this is an accurate and natural translation that effectively conveys the
+original message. The choice of "упомянула" for "cites" appropriately captures
+the meaning in this context, and the grammatical structure follows Russian
+conventions naturally. The translation maintains all proper nouns with correct
+Russian transliteration and uses appropriate terminology for PTSD (ПТСР).
+
+There are no hallucinations or missing content in this translation.
+"""
+{% elif source_language == "English" and target_language == "Spanish" %}
+For example for the source sentence:
+
+"California leads with 5.8 million registered voters."
+
+One might have a translation:
+
+"California encabeza con 5,8 millones de votantes registrados."
+
+This could be broken down and analyzed as follows:
+
+"""
+Span 1: California encabeza
+ACCURACY: Accurate translation of "California leads"
+TERMINOLOGY: Correct preservation of "California" and appropriate use of "encabeza" for "leads"
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Spanish-speaking audience
+
+Span 2: con 5,8 millones
+ACCURACY: Accurate translation of "5.8 million"
+TERMINOLOGY: Correct use of decimal comma (standard in Spanish) instead of decimal point
+LINGUISTIC CONVENTIONS: Follows Spanish number formatting conventions
+AUDIENCE APPROPRIATENESS: Appropriate for a Spanish-speaking audience
+
+Span 3: de votantes registrados
+ACCURACY: Accurate translation of "registered voters"
+TERMINOLOGY: Correct use of "votantes registrados" which is the standard term
+LINGUISTIC CONVENTIONS: Proper word order and agreement
+AUDIENCE APPROPRIATENESS: Appropriate terminology for Spanish-speaking audiences following electoral processes
+
+Overall, this is an excellent translation that accurately conveys the original message while following Spanish language conventions. The use of "encabeza" captures the meaning of "leads" well in this context, and the number formatting follows Spanish conventions by using a comma instead of a period for the decimal.
+
+There are no hallucinations or missing content in this translation.
+"""
+{% endif %}
+
+AFTER your evaluation of each translation pair, please indicate WHICH
+translation is best by saying "Translation 1 is best." or "Translation 2 is
+best." or "Translation 3 is best.", and so forth.
+
+Finally, based on your assessment of the provided translations, please see if
+you can provide a better translation. Enclose that translation in a
+<translation></translation> block.
+
+The original text is:
+
+{{source_text}}
+
+The {{number}} translations follow:
+</INSTRUCTIONS>

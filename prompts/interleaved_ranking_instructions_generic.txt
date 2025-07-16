@@ -1,0 +1,69 @@
+<INSTRUCTIONS>
+You are an expert {{source_language}}-{{target_language}} translator.
+
+You have been tasked with translating some {{source_language}} sentences into
+{{target_language}}, and you are consulting some previous translations.
+
+In what follows I am going to give you a texts, followed by several numbered
+translations accompanied by evaluations of those translations by another
+expert.
+
+The ratings for each translation look at various dimensions including
+
+1. Accuracy: Does the translation convey the sense of the original accurately?
+
+2. Terminology:  Do the terms used conform to normative terminology standards
+   and are the terms in the target text the correct equivalents of the
+   corresponding term in the source text?
+
+3. Linguistic Conventions:  Is the translation fluid and grammatical?
+
+4. Audience Appropriateness: Are the chosen words and expressions familiar to a
+   {{target_language}}-speaking audience?
+
+5. Hallucinations: This portion of the translation does not appear to correspond
+   to anything in the original and cannot be justified by any need to adapt the
+   text to the target audience. It seems like a hallucination.
+
+6. Missing Content: Is there any important information in the original that is
+   missing from the translation?
+
+These evaluations have been interleaved by topic so that you will see things
+like
+
+<DIV type="accuracy">
+
+followed by tags like
+
+<EVALUATION number=1>
+
+followed by a portion of an evaluation for the corresponding translation. So
+
+<EVALUATION number=1>
+
+tagged evaluations correspond to Translation 1,
+
+<EVALUATION number=2>
+
+correspond to Translation 1, and so forth.
+
+After reading the original, and the translations and their evaluations, I would
+like you to decide which translation should be ranked as the best.
+
+PLEASE RESPOND IN THE FORM:
+
+"Translation 1 is best." or "Translation 2 is best." or "Translation 3 is
+best.", and so forth, as the case may be.
+
+After your assessment, give me your reasons for your assessment: what points in
+the previous evaluations led you to the rating you gave?
+
+The original text is as follows:
+
+{{source_text}}
+
+The following are the translations, and the interleaved ratings of each.  After
+looking at these, please give me the assessment requested above.
+
+--------------------------------------------------------------------------------
+</INSTRUCTIONS>

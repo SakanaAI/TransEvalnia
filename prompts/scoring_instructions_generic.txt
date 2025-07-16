@@ -1,0 +1,271 @@
+<INSTRUCTIONS>
+You are an expert {{source_language}}-{{target_language}} translator.
+
+You have been tasked with translating various {{source_language}} texts into
+{{target_language}}, and you are consulting some previous translations.
+
+In what follows I am going to give you a text, followed by a translation
+accompanied by an evaluation of the translation by another expert. The
+evaluation will break down the translation into one or more parts, and rate each
+part along the following dimensions:
+
+1. ACCURACY: Does the translation convey the sense of the original accurately?
+
+2. TERMINOLOGY:  Do the terms used conform to normative terminology standards
+   and are the terms in the target text the correct equivalents of the
+   corresponding term in the source text?
+
+3. LINGUISTIC CONVENTIONS:  Is the translation fluid and grammatical?
+
+4. AUDIENCE APPROPRIATENESS: Are the chosen words and expressions familiar to a
+   {{target_language}}-speaking audience?
+
+5. HALLUCINATIONS: This portion of the translation does not appear to correspond
+   to anything in the original and cannot be justified by any need to adapt the
+   text to the target audience. It seems like a hallucination.
+
+6. MISSING CONTENT: Is there any important information in the original that is
+   missing from the translation?
+
+After the evaluations of each of the parts along these dimensions, an overall
+evaluation of the translation will be provided.
+
+{% if source_language == "English" and target_language == "Japanese" %}
+After reading the original, the translation and its evaluations, I would like
+you to assign a score to the translation for each of the parts, for each of the
+evaluated dimensions, as well as a score for the translation overall. Scores
+should be integers between 1 and 5 inclusive, where 5 is best (essentially
+perfect), and 1 is the worst. For example, one has an evaluation as in the
+SAMPLE below for the Japanese translation '「私は天才的なアイデアだと思う。' of
+the English original '"I think this is a genus idea.'
+
+# BEGIN SAMPLE
+Span 1: 「私は
+ACCURACY: Accurate translation of "I"
+TERMINOLOGY: Correct use of the Japanese pronoun
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Japanese audience
+
+Span 2: 天才的なアイデアだと思う。
+ACCURACY: The translation "天才的なアイデア" (genius idea) does not accurately convey the sense of "genus idea," which is likely a typo or a misuse of the word "genus" in the original text. The term "genus" in English typically refers to a taxonomic category ranking below family and above species, or a class or group of things or people with common characteristics. The translation "天才的なアイデア" suggests a brilliant or genius idea, which is a different concept.
+TERMINOLOGY: The term "天才的な" (genius) is not the correct equivalent of "genus" in this context. If the original text intended to use "genus," a more appropriate translation might be "属のアイデア" (genus idea) or "種類のアイデア" (type of idea), depending on the intended meaning.
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: The term "天才的なアイデア" is familiar to a Japanese audience, but it does not match the original text's intended meaning.
+
+Overall, the translation is fluent and grammatically correct, but it does not accurately convey the intended meaning of the original text. The term "genus" is mistranslated as "天才的な" (genius), which changes the meaning significantly. There are no hallucinations or missing content, but the accuracy of the translation is compromised due to the misinterpretation of "genus."
+# END SAMPLE
+
+Then you might score this as in the sample below. Note that you MUST follow the
+format shown within the sample below:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	5
+span_1_audience_appropriateness	5
+span_2_accuracy			2
+span_2_terminology		2
+span_2_linguistic_conventions	5
+span_2_audience_appropriateness	2
+span_overall			3
+# END SAMPLE SCORES
+{% elif source_language == "Japanese" and target_language == "English" %}
+For example, consider scoring the English translation "I want to go shopping to Shibuya" for the Japanese sentence "渋谷に買い物をしに行きたい。"
+
+# BEGIN SAMPLE
+Span 1: I want to go
+ACCURACY: Accurate translation of "行きたい"
+TERMINOLOGY: Appropriate translation of the desire expression
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Natural English expression
+
+Span 2: shopping to Shibuya
+ACCURACY: Contains the core meaning but uses incorrect preposition "to" instead of the correct "in" or "at" for shopping location
+TERMINOLOGY: "Shibuya" is correctly kept as is, but "shopping" doesn't fully capture the noun+verb nature of "買い物をする"
+LINGUISTIC CONVENTIONS: Incorrect preposition use ("to" instead of "in"/"at") makes this ungrammatical in English
+AUDIENCE APPROPRIATENESS: While "Shibuya" is understandable to those familiar with Tokyo, the awkward preposition use makes this sound non-native
+
+Overall, while the translation conveys the basic meaning, it contains a significant grammatical error in preposition usage that makes it sound unnatural to English speakers. The translation would be improved by saying "I want to go shopping in Shibuya" or "I want to go to Shibuya to shop." There are no hallucinations or missing content, but the grammatical error impacts the overall quality.
+# END SAMPLE
+
+Then scoring would be done as follows:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	5
+span_1_audience_appropriateness	5
+span_2_accuracy			4
+span_2_terminology		4
+span_2_linguistic_conventions	2
+span_2_audience_appropriateness	3
+span_overall			3
+# END SAMPLE SCORES
+{% elif source_language == "English" and target_language == "German" %}
+After reading the original, the translation and its evaluations, I would like
+you to assign a score to the translation for each of the parts, for each of the
+evaluated dimensions, as well as a score for the translation overall. Scores
+should be integers between 1 and 5 inclusive, where 5 is best (essentially
+perfect), and 1 is the worst. For example, one has an evaluation as in the
+SAMPLE below for the German translation '"Ich denke, das ist eine Gattung Idee."' of
+the English original '"I think this is a genus idea.'
+
+# BEGIN SAMPLE
+Span 1: "Ich denke,
+ACCURACY: Accurate translation of "I think"
+TERMINOLOGY: Correct use of the German verb "denken"
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a German audience
+
+Span 2: das ist eine Gattung Idee."
+ACCURACY: The translation "Gattung Idee" (genus idea) is a literal translation of "genus idea," which appears to be a typo or misuse of the word "genus" in the original text. The term "Gattung" in German, like in English, typically refers to a biological classification or category. The original likely meant to use "genial" (genius) instead of "genus," in which case the translation should have been "geniale Idee."
+TERMINOLOGY: The term "Gattung" (genus) is technically correct for translating "genus" but appears to be used inappropriately given the likely intended meaning. If the original meant "genius," the correct term would be "genial."
+LINGUISTIC CONVENTIONS: While the words are grammatically connected, the compound construction "Gattung Idee" is awkward in German. It should either be hyphenated (Gattungs-Idee) or combined (Gattungsidee) if this were the intended meaning.
+AUDIENCE APPROPRIATENESS: The term "Gattung" in this context would be confusing to a German audience, as it suggests a biological or taxonomical classification rather than the likely intended meaning of a brilliant idea.
+
+Overall, the translation maintains grammatical structure but fails to capture the likely intended meaning of the original text. The term "genus" is translated literally as "Gattung," when context suggests this was meant to be "genius." Additionally, the compound noun formation doesn't follow German conventions. While there are no omissions, the accuracy is compromised by the literal translation of what appears to be a typo in the source text.
+# END SAMPLE
+
+Then you might score this as in the sample below. Note that you MUST follow the
+format shown within the sample below:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	5
+span_1_audience_appropriateness	5
+span_2_accuracy			2
+span_2_terminology		2
+span_2_linguistic_conventions	3
+span_2_audience_appropriateness	2
+span_overall			3
+# END SAMPLE SCORES
+{% elif source_language == "Chinese" and target_language == "English" %}
+After reading the original, the translation and its evaluations, I would like
+you to assign a score to the translation for each of the parts, for each of the
+evaluated dimensions, as well as a score for the translation overall. Scores
+should be integers between 1 and 5 inclusive, where 5 is best (essentially
+perfect), and 1 is the worst. For example, one has an evaluation as in the
+SAMPLE below for the English translation 'I went to his home to play game.' of
+the Chinese original '我去他家打游戏。'
+
+# BEGIN SAMPLE
+Span 1: I went to his home
+ACCURACY: Accurate translation of "我去他家"
+TERMINOLOGY: Correct use of pronouns and basic vocabulary
+LINGUISTIC CONVENTIONS: Minor grammatical issue with article usage ("his home" would be more natural as "his house" in this context)
+AUDIENCE APPROPRIATENESS: Generally appropriate for an English-speaking audience
+
+Span 2: to play game
+ACCURACY: The basic meaning of "打游戏" is conveyed but incompletely
+TERMINOLOGY: "Play" is the correct verb but missing article and plural form
+LINGUISTIC CONVENTIONS: Incorrect article usage and number - should be "to play games" or "to play a game"
+AUDIENCE APPROPRIATENESS: The phrasing sounds non-native to English speakers
+
+Overall, the translation conveys the basic meaning of the original Chinese text but contains grammatical errors that make it sound non-native. While the first span is mostly acceptable with minor issues, the second span has more significant problems with English article usage and plural forms. The meaning is clear but the English doesn't follow natural conventions.
+# END SAMPLE
+
+Then you might score this as in the sample below. Note that you MUST follow the
+format shown within the sample below:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	4
+span_1_audience_appropriateness	4
+span_2_accuracy			4
+span_2_terminology		3
+span_2_linguistic_conventions	2
+span_2_audience_appropriateness	2
+span_overall			3
+# END SAMPLE SCORES
+{% elif source_language == "English" and target_language == "Russian" %}
+After reading the original, the translation and its evaluations, I would like
+you to assign a score to the translation for each of the parts, for each of the
+evaluated dimensions, as well as a score for the translation overall. Scores
+should be integers between 1 and 5 inclusive, where 5 is best (essentially
+perfect), and 1 is the worst. For example, one has an evaluation as in the
+SAMPLE below for the Russian translation 'Я думаю, это гениальная идея.' of
+the English original '"I think this is a genus idea.'
+
+# BEGIN SAMPLE
+Span 1: Я думаю,
+ACCURACY: Accurate translation of "I think"
+TERMINOLOGY: Correct use of the Russian pronoun and verb
+LINGUISTIC CONVENTIONS: Grammatically correct with appropriate comma
+AUDIENCE APPROPRIATENESS: Appropriate for a Russian audience
+
+Span 2: это гениальная идея
+ACCURACY: The translation "гениальная идея" (genius idea) does not accurately convey the sense of "genus idea," which is likely a typo or a misuse of the word "genus" in the original text. The term "genus" in English typically refers to a taxonomic category ranking below family and above species, or a class or group of things or people with common characteristics. The translation "гениальная идея" suggests a brilliant or genius idea, which is a different concept.
+TERMINOLOGY: The term "гениальная" (genius) is not the correct equivalent of "genus" in this context. If the original text intended to use "genus," a more appropriate translation might be "родовая идея" (genus idea) or "видовая идея" (type idea), depending on the intended meaning.
+LINGUISTIC CONVENTIONS: Grammatically correct with proper adjective agreement
+AUDIENCE APPROPRIATENESS: The term "гениальная идея" is familiar to a Russian audience, but it does not match the original text's intended meaning.
+
+Overall, the translation is fluent and grammatically correct, but it does not accurately convey the intended meaning of the original text. The term "genus" is mistranslated as "гениальная" (genius), which changes the meaning significantly. There are no hallucinations or missing content, but the accuracy of the translation is compromised due to the misinterpretation of "genus."
+# END SAMPLE
+
+Then you might score this as in the sample below. Note that you MUST follow the
+format shown within the sample below:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	5
+span_1_audience_appropriateness	5
+span_2_accuracy			2
+span_2_terminology		2
+span_2_linguistic_conventions	5
+span_2_audience_appropriateness	2
+span_overall			3
+# END SAMPLE SCORES
+{% elif source_language == "English" and target_language == "Spanish" %}
+After reading the original, the translation and its evaluations, I would like
+you to assign a score to the translation for each of the parts, for each of the
+evaluated dimensions, as well as a score for the translation overall. Scores
+should be integers between 1 and 5 inclusive, where 5 is best (essentially
+perfect), and 1 is the worst. For example, one has an evaluation as in the
+SAMPLE below for the Spanish translation '"Pienso que esta es una idea génus."' of
+the English original '"I think this is a genus idea.'
+
+# BEGIN SAMPLE
+Span 1: Pienso que
+ACCURACY: Accurate translation of "I think"
+TERMINOLOGY: Correct use of the Spanish verb "pensar"
+LINGUISTIC CONVENTIONS: Grammatically correct
+AUDIENCE APPROPRIATENESS: Appropriate for a Spanish audience
+
+Span 2: esta es una idea génus
+ACCURACY: The translation "idea génus" does not accurately convey the sense of "genus idea," which is likely a typo or a misuse of the word "genus" in the original text. The term "genus" in English typically refers to a taxonomic category ranking below family and above species, or a class or group of things or people with common characteristics. The direct borrowing of "génus" (with incorrect accent) suggests a misunderstanding of the original term.
+TERMINOLOGY: The term "génus" is not correct Spanish and appears to be a direct transliteration of the English "genus". If the original text intended to use "genus," a more appropriate translation might be "género" (genus) or "tipo" (type), depending on the intended meaning.
+LINGUISTIC CONVENTIONS: The grammatical structure is correct, but the use of "génus" as an adjective is not standard Spanish
+AUDIENCE APPROPRIATENESS: The term "génus" would be unfamiliar and confusing to a Spanish audience
+
+Overall, the translation is grammatically structured but does not accurately convey the intended meaning of the original text. The term "genus" is inappropriately carried over as "génus", which is not a Spanish word. There are no hallucinations or missing content, but the accuracy of the translation is compromised due to the incorrect handling of the technical term "genus."
+# END SAMPLE
+
+Then you might score this as in the sample below. Note that you MUST follow the
+format shown within the sample below:
+
+# BEGIN SAMPLE SCORES
+span_1_accuracy			5
+span_1_terminology		5
+span_1_linguistic_conventions	5
+span_1_audience_appropriateness	5
+span_2_accuracy			2
+span_2_terminology		2
+span_2_linguistic_conventions	3
+span_2_audience_appropriateness	2
+span_overall			3
+# END SAMPLE SCORES
+{% endif %}
+
+Please output your set of scores for the translation within an
+<EVALUATION></EVALUATION> block.
+
+The original text is as follows:
+
+{{source_text}}
+
+The translation and its evaluation are below the dashed line:
+---------------------------------------
+</INSTRUCTIONS>

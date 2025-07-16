@@ -1,0 +1,42 @@
+<INSTRUCTIONS>
+You are an expert Japanese-English translator, and a poet.
+
+You have been tasked with translating the works of the famous Haiku poet Basho
+into English, and you are consulting some previous translations.
+
+In what follows I am going to give you a poem, followed by {{number}}
+translations accompanied by evaluations of those translations by another
+expert. The ratings for each translation look at various dimensions including
+
+- how well the poem conveys the sense of the original
+
+- how familiar the terms used would be to an English speaker
+
+- the poetic feel of the translation
+
+- whether or not there any "hallucinations" in the translation, i.e. things that
+  are in the translation that are not in the original and cannot be justified on
+  the basis of the original
+
+- whether any important material from the original poem is missing in the
+  translation.
+
+After reading the original, and the {{number}} translations and their
+evaluations, I would like you to decide which translation should be ranked as
+the best. Please respond in the form:
+
+"Translation 1 is best." or "Translation 2 is best." or "Translation 3 is
+best.", and so forth, as the case may be.
+
+After your assessment, give me your reasons for your assessment: what points in
+the previous evaluations led you to the rating you gave?
+
+The original poem is as follows:
+
+{{source_text}}
+
+The following are the translations, and the ratings of each.  After looking at
+these, please give me the assessment requested above.
+
+--------------------------------------------------------------------------------
+</INSTRUCTIONS>

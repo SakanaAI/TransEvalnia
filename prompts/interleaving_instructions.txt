@@ -1,0 +1,1296 @@
+<INSTRUCTIONS>
+In the following you will be presented with {{number}} evaluations of a
+{{source_language}}-{{target_language}} translation by different evaluators.
+The evaluations are structured similarly so that they can each be divided into
+pieces that focus on particular aspects of the translation. Your task is to
+compare the evaluations, split them into topical sections, and then group the
+sections from the {{number}} evaluations so that related topics from the
+evaluations are grouped together.
+
+{% if source_language == "English" and target_language == "Japanese" %}
+For example, consider the following two evaluations of translations from English
+into Japanese of the sentence "ABC was second with 3.26 million viewers."
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: ABCは2位で3.26万人の視聴者になりました。
+Evaluation:
+The translation can be divided into two spans:
+
+a) ABCは2位で
+b) 3.26万人の視聴者になりました。
+
+Evaluation:
+
+a) ABCは2位で
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+TERMINOLOGY: Appropriate. "ABC" is kept as is, and "2位" is the correct term for "second" in rankings.
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+AUDIENCE APPROPRIATENESS: Suitable for a Japanese audience.
+
+b) 3.26万人の視聴者になりました。
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 32,600 (3.26万).
+TERMINOLOGY: Incorrect. "万" (ten thousand) is used instead of "百万" (million).
+LINGUISTIC CONVENTIONS: The grammar is correct, but the phrasing "視聴者になりました" (became viewers) is slightly unnatural.
+AUDIENCE APPROPRIATENESS: The expression is understandable but not ideal.
+
+HALLUCINATIONS: None detected.
+
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+
+Overall, while the translation conveys the ranking correctly, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "326万人の視聴者" or "3.26百万人の視聴者" and adjusting
+the phrasing to something more natural like "ABCは326万人の視聴者で2位となりまし
+た。"
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: ABCは326万人の視聴者で2番目だった。
+Evaluation:
+Span breakdown:
+a) ABCは
+b) 326万人の視聴者で
+c) 2番目だった。
+
+1) ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "3.26 million viewers".
+c) Correctly translates "was second".
+
+2) TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "視聴者" is the correct term for "viewers" in this context.
+c) "2番目" is an appropriate term for "second" in rankings.
+
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Japanese sentence structure.
+
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Japanese-speaking audience interested in TV ratings.
+
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Japanese.
+--------------------------------------------------------------------------------------
+
+From these two evaluations one would produce the following output:
+
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: ABCは2位で3.26万人の視聴者になりました。
+Evaluation:
+The translation can be divided into two spans:
+a) ABCは2位で
+b) 3.26万人の視聴者になりました。
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: ABCは326万人の視聴者で2番目だった。
+Evaluation:
+Span breakdown:
+a) ABCは
+b) 326万人の視聴者で
+c) 2番目だった。
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) ABCは2位で
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+
+b) 3.26万人の視聴者になりました。
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 32,600 (3.26万).
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "3.26 million viewers".
+c) Correctly translates "was second".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) ABCは2位で
+TERMINOLOGY: Appropriate. "ABC" is kept as is, and "2位" is the correct term for "second" in rankings.
+
+b) 3.26万人の視聴者になりました。
+TERMINOLOGY: Incorrect. "万" (ten thousand) is used instead of "百万" (million).
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "視聴者" is the correct term for "viewers" in this context.
+c) "2番目" is an appropriate term for "second" in rankings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) ABCは2位で
+
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+
+b) 3.26万人の視聴者になりました。
+LINGUISTIC CONVENTIONS: The grammar is correct, but the phrasing "視聴者になりま
+した" (became viewers) is slightly unnatural.
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Japanese sentence structure.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) ABCは2位で
+
+AUDIENCE APPROPRIATENESS: Suitable for a Japanese audience.
+
+b) 3.26万人の視聴者になりました。
+
+AUDIENCE APPROPRIATENESS: The expression is understandable but not ideal.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Japanese-speaking audience interested in TV ratings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation conveys the ranking correctly, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "326万人の視聴者" or "3.26百万人の視聴者" and adjusting
+the phrasing to something more natural like "ABCは326万人の視聴者で2位となりまし
+た。"
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Japanese.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% elif source_language == "Japanese" and target_language == "English" %}
+For example, consider the following two evaluations of translations from Japanese into English of the sentence "フジテレビは視聴率8.7%を記録し、トップとなった。"
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: Fuji TV recorded a rating of 8.7% becoming the top.
+Evaluation:
+The translation can be divided into two spans:
+
+a) Fuji TV recorded a rating of 8.7%
+b) becoming the top
+
+Evaluation:
+
+a) Fuji TV recorded a rating of 8.7%
+ACCURACY: Good. This accurately conveys that Fuji TV achieved an 8.7% rating.
+TERMINOLOGY: Mixed. "Fuji TV" is correct, but "rating" alone without "viewer" or "audience" is too literal.
+LINGUISTIC CONVENTIONS: Somewhat awkward. The structure follows Japanese too closely.
+AUDIENCE APPROPRIATENESS: The meaning is clear but the phrasing is not ideal for English media reporting.
+
+b) becoming the top
+ACCURACY: Fair. While it conveys the main point, it's too literal.
+TERMINOLOGY: Poor. "The top" is an awkward translation of "トップ" in this context.
+LINGUISTIC CONVENTIONS: Unnatural. The participial phrase doesn't follow English media reporting conventions.
+AUDIENCE APPROPRIATENESS: The expression would be unclear to an English-speaking audience familiar with TV ratings.
+
+HALLUCINATIONS: None detected.
+
+MISSING CONTENT: No content is missing, but the style and phrasing diminish the clarity of the information.
+
+Overall, while the translation includes all the basic information, it adheres too closely to Japanese sentence structure. It would be much improved by restructuring to something more natural like "Fuji TV took the top spot with an 8.7% viewer rating" or "With an 8.7% audience share, Fuji TV claimed the number one position."
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: Fuji TV topped the ratings with an 8.7% audience share.
+Evaluation:
+Span breakdown:
+a) Fuji TV
+b) topped the ratings
+c) with an 8.7% audience share
+
+1) ACCURACY:
+a) Accurate translation of "フジテレビ".
+b) Correctly conveys "トップとなった".
+c) Accurately represents "視聴率8.7%".
+
+2) TERMINOLOGY:
+a) Correct use of "Fuji TV" as the standard English name.
+b) "Topped the ratings" is appropriate industry terminology.
+c) "Audience share" is the correct technical term for "視聴率".
+
+3) LINGUISTIC CONVENTIONS:
+The entire translation follows natural English syntax and broadcasting industry conventions.
+
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are standard in English-language media reporting on TV ratings.
+
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original message while using natural English expressions appropriate for media industry context.
+--------------------------------------------------------------------------------------
+
+From these two evaluations one would produce the following output:
+
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: Fuji TV recorded a rating of 8.7% becoming the top.
+Evaluation:
+The translation can be divided into two spans:
+a) Fuji TV recorded a rating of 8.7%
+b) becoming the top
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: Fuji TV topped the ratings with an 8.7% audience share.
+Evaluation:
+Span breakdown:
+a) Fuji TV
+b) topped the ratings
+c) with an 8.7% audience share
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) Fuji TV recorded a rating of 8.7%
+ACCURACY: Good. This accurately conveys that Fuji TV achieved an 8.7% rating.
+
+b) becoming the top
+ACCURACY: Fair. While it conveys the main point, it's too literal.
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "フジテレビ".
+b) Correctly conveys "トップとなった".
+c) Accurately represents "視聴率8.7%".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) Fuji TV recorded a rating of 8.7%
+TERMINOLOGY: Mixed. "Fuji TV" is correct, but "rating" alone without "viewer" or "audience" is too literal.
+
+b) becoming the top
+TERMINOLOGY: Poor. "The top" is an awkward translation of "トップ" in this context.
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) Correct use of "Fuji TV" as the standard English name.
+b) "Topped the ratings" is appropriate industry terminology.
+c) "Audience share" is the correct technical term for "視聴率".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) Fuji TV recorded a rating of 8.7%
+LINGUISTIC CONVENTIONS: Somewhat awkward. The structure follows Japanese too closely.
+
+b) becoming the top
+LINGUISTIC CONVENTIONS: Unnatural. The participial phrase doesn't follow English media reporting conventions.
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation follows natural English syntax and broadcasting industry conventions.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) Fuji TV recorded a rating of 8.7%
+AUDIENCE APPROPRIATENESS: The meaning is clear but the phrasing is not ideal for English media reporting.
+
+b) becoming the top
+AUDIENCE APPROPRIATENESS: The expression would be unclear to an English-speaking audience familiar with TV ratings.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are standard in English-language media reporting on TV ratings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No content is missing, but the style and phrasing diminish the clarity of the information.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation includes all the basic information, it adheres too closely to Japanese sentence structure. It would be much improved by restructuring to something more natural like "Fuji TV took the top spot with an 8.7% viewer rating" or "With an 8.7% audience share, Fuji TV claimed the number one position."
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original message while using natural English expressions appropriate for media industry context.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% elif source_language == "English" and target_language == "German" %}
+For example, consider the following two evaluations of translations from English into German of the sentence "The company reported a 15% increase in annual revenue."
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: Die Firma berichtete von einer 15%-igen Erhöhung des jährlichen Umsatzes.
+Evaluation:
+The translation can be divided into two spans:
+
+a) Die Firma berichtete von
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+
+Evaluation:
+
+a) Die Firma berichtete von
+ACCURACY: Fair. While it conveys the basic meaning, "Die Firma" is less formal than "das Unternehmen" for "company" in a business context.
+TERMINOLOGY: Suboptimal. "Firma" is more colloquial, whereas "Unternehmen" would be more appropriate for formal business reporting.
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+AUDIENCE APPROPRIATENESS: Slightly informal for a business context.
+
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+ACCURACY: Good. The percentage and the concept of increase are accurately conveyed.
+TERMINOLOGY: Appropriate. "Umsatz" is the correct term for "revenue" in this context.
+LINGUISTIC CONVENTIONS: The hyphenation in "15%-igen" could be improved to "15-prozentigen" for better readability.
+AUDIENCE APPROPRIATENESS: The terminology is suitable for the target audience.
+
+HALLUCINATIONS: None detected.
+
+MISSING CONTENT: No significant content is missing, but the register could be more appropriate for business communication.
+
+Overall, while the translation conveys the basic message, it would be improved by using more formal business terminology and clearer percentage formatting, such as "Das Unternehmen meldete eine 15-prozentige Steigerung des Jahresumsatzes."
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: Das Unternehmen meldete eine 15-prozentige Steigerung des Jahresumsatzes.
+Evaluation:
+Span breakdown:
+a) Das Unternehmen
+b) meldete
+c) eine 15-prozentige Steigerung des Jahresumsatzes
+
+ACCURACY:
+a) Accurate translation of "company" using formal business German.
+b) Precise translation of "reported".
+c) Correctly conveys "15% increase in annual revenue".
+
+TERMINOLOGY:
+a) "Unternehmen" is the appropriate formal term for "company".
+b) "melden" is the correct formal verb for business reporting.
+c) "Jahresumsatz" is the precise term for "annual revenue".
+
+LINGUISTIC CONVENTIONS:
+The entire translation follows standard German business writing conventions, including proper hyphenation and compound word formation.
+
+AUDIENCE APPROPRIATENESS:
+The translation uses formal business German appropriate for corporate communications.
+
+HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original message while maintaining appropriate formality and business terminology in German.
+--------------------------------------------------------------------------------------
+From these two evaluations one would produce the following output:
+
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: Die Firma berichtete von einer 15%-igen Erhöhung des jährlichen Umsatzes.
+Evaluation:
+The translation can be divided into two spans:
+a) Die Firma berichtete von
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: Das Unternehmen meldete eine 15-prozentige Steigerung des Jahresumsatzes.
+Evaluation:
+Span breakdown:
+a) Das Unternehmen
+b) meldete
+c) eine 15-prozentige Steigerung des Jahresumsatzes
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) Die Firma berichtete von
+ACCURACY: Fair. While it conveys the basic meaning, "Die Firma" is less formal than "das Unternehmen" for "company" in a business context.
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+ACCURACY: Good. The percentage and the concept of increase are accurately conveyed.
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "company" using formal business German.
+b) Precise translation of "reported".
+c) Correctly conveys "15% increase in annual revenue".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) Die Firma berichtete von
+TERMINOLOGY: Suboptimal. "Firma" is more colloquial, whereas "Unternehmen" would be more appropriate for formal business reporting.
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+TERMINOLOGY: Appropriate. "Umsatz" is the correct term for "revenue" in this context.
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) "Unternehmen" is the appropriate formal term for "company".
+b) "melden" is the correct formal verb for business reporting.
+c) "Jahresumsatz" is the precise term for "annual revenue".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) Die Firma berichtete von
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+LINGUISTIC CONVENTIONS: The hyphenation in "15%-igen" could be improved to "15-prozentigen" for better readability.
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation follows standard German business writing conventions, including proper hyphenation and compound word formation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) Die Firma berichtete von
+AUDIENCE APPROPRIATENESS: Slightly informal for a business context.
+b) einer 15%-igen Erhöhung des jährlichen Umsatzes.
+AUDIENCE APPROPRIATENESS: The terminology is suitable for the target audience.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses formal business German appropriate for corporate communications.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No significant content is missing, but the register could be more appropriate for business communication.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation conveys the basic message, it would be improved by using more formal business terminology and clearer percentage formatting, such as "Das Unternehmen meldete eine 15-prozentige Steigerung des Jahresumsatzes."
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original message while maintaining appropriate formality and business terminology in German.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% elif source_language == "Chinese" and target_language == "English" %}
+I'll create an equivalent example for Chinese->English translation evaluations and their interleaved format. I'll keep the same structure but adapt it for a Chinese source text evaluation.
+
+For this example, I'll use the Chinese sentence "该公司去年净利润达到了12.8亿元人民币。" (The company's net profit reached 1.28 billion RMB last year.)
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: The company's net profit was 128 million RMB in the previous year.
+Evaluation:
+The translation can be divided into two spans:
+
+a) The company's net profit
+b) was 128 million RMB in the previous year.
+
+Evaluation:
+
+a) The company's net profit
+ACCURACY: Good. This accurately conveys "该公司净利润".
+TERMINOLOGY: Appropriate. "净利润" is correctly translated as "net profit".
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+AUDIENCE APPROPRIATENESS: Suitable for an English-speaking audience.
+
+b) was 128 million RMB in the previous year
+ACCURACY: Poor. There's a significant error in the number. The original states 12.8
+billion, but the translation says 128 million.
+TERMINOLOGY: Incorrect. Billion (亿) is mistranslated as million.
+LINGUISTIC CONVENTIONS: The grammar is correct, but "previous year" is less precise
+than "last year".
+AUDIENCE APPROPRIATENESS: The expression is understandable but not ideal.
+
+HALLUCINATIONS: None detected.
+
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number results in a loss of accurate information.
+
+Overall, while the translation conveys the basic meaning correctly, it fails to
+accurately represent the monetary amount, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "1.28 billion RMB" and adjusting the phrasing to "The
+company's net profit reached 1.28 billion RMB last year."
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: The company's net profit reached 1.28 billion RMB last year.
+Evaluation:
+Span breakdown:
+a) The company's
+b) net profit reached
+c) 1.28 billion RMB
+d) last year
+
+1) ACCURACY:
+a) Accurate translation of "该公司".
+b) Correctly conveys "净利润达到".
+c) Accurately translates "12.8亿元人民币".
+d) Correctly translates "去年".
+
+2) TERMINOLOGY:
+a) "公司" is correctly translated as "company".
+b) "净利润" is appropriately translated as "net profit".
+c) "亿" is correctly converted to "billion".
+d) "去年" is accurately translated as "last year".
+
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows English sentence structure.
+
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+an English-speaking audience interested in financial reports.
+
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in English.
+--------------------------------------------------------------------------------------
+
+From these two evaluations one would produce the following output:
+
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: The company's net profit was 128 million RMB in the previous year.
+Evaluation:
+The translation can be divided into two spans:
+a) The company's net profit
+b) was 128 million RMB in the previous year.
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: The company's net profit reached 1.28 billion RMB last year.
+Evaluation:
+Span breakdown:
+a) The company's
+b) net profit reached
+c) 1.28 billion RMB
+d) last year
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) The company's net profit
+ACCURACY: Good. This accurately conveys "该公司净利润".
+
+b) was 128 million RMB in the previous year
+ACCURACY: Poor. There's a significant error in the number. The original states 12.8
+billion, but the translation says 128 million.
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "该公司".
+b) Correctly conveys "净利润达到".
+c) Accurately translates "12.8亿元人民币".
+d) Correctly translates "去年".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) The company's net profit
+TERMINOLOGY: Appropriate. "净利润" is correctly translated as "net profit".
+
+b) was 128 million RMB in the previous year
+TERMINOLOGY: Incorrect. Billion (亿) is mistranslated as million.
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) "公司" is correctly translated as "company".
+b) "净利润" is appropriately translated as "net profit".
+c) "亿" is correctly converted to "billion".
+d) "去年" is accurately translated as "last year".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) The company's net profit
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+
+b) was 128 million RMB in the previous year
+LINGUISTIC CONVENTIONS: The grammar is correct, but "previous year" is less precise
+than "last year".
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows English sentence structure.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) The company's net profit
+AUDIENCE APPROPRIATENESS: Suitable for an English-speaking audience.
+
+b) was 128 million RMB in the previous year
+AUDIENCE APPROPRIATENESS: The expression is understandable but not ideal.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+an English-speaking audience interested in financial reports.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number results in a loss of accurate information.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation conveys the basic meaning correctly, it fails to
+accurately represent the monetary amount, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "1.28 billion RMB" and adjusting the phrasing to "The
+company's net profit reached 1.28 billion RMB last year."
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in English.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% elif source_language == "English" and target_language == "Russian" %}
+For example, consider the following two evaluations of translations from English
+into Russian of the sentence "ABC was second with 3.26 million viewers."
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: ABC занял второе место с 3.26 тысячами зрителей.
+Evaluation:
+The translation can be divided into two spans:
+
+a) ABC занял второе место
+b) с 3.26 тысячами зрителей
+
+Evaluation:
+
+a) ABC занял второе место
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+TERMINOLOGY: Appropriate. "ABC" is kept as is, and "второе место" is the correct term for "second" in rankings.
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+AUDIENCE APPROPRIATENESS: Suitable for a Russian audience.
+
+b) с 3.26 тысячами зрителей
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 3,260 (3.26 тысяч).
+TERMINOLOGY: Incorrect. "тысяч" (thousand) is used instead of "миллионов" (million).
+LINGUISTIC CONVENTIONS: The grammar is correct, but the numerical expression with "тысячами" is awkward.
+AUDIENCE APPROPRIATENESS: The expression is understandable but not standard for ratings context.
+HALLUCINATIONS: None detected.
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+Overall, while the translation conveys the ranking correctly, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "3,26 миллиона зрителей" and adjusting the phrasing to
+something more natural like "ABC занял второе место с аудиторией в 3,26 миллиона зрителей."
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: ABC со зрительской аудиторией в 3,26 миллиона занял второе место.
+Evaluation:
+Span breakdown:
+a) ABC
+b) со зрительской аудиторией в 3,26 миллиона
+c) занял второе место
+
+ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "3.26 million viewers".
+c) Correctly translates "was second".
+
+TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "зрительская аудитория" is the correct term for "viewers" in this context.
+c) "занял второе место" is an appropriate term for "was second" in rankings.
+
+LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Russian sentence structure.
+
+AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Russian-speaking audience interested in TV ratings.
+
+HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Russian.
+--------------------------------------------------------------------------------------
+
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: ABC занял второе место с 3.26 тысячами зрителей.
+Evaluation:
+The translation can be divided into two spans:
+a) ABC занял второе место
+b) с 3.26 тысячами зрителей
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: ABC со зрительской аудиторией в 3,26 миллиона занял второе место.
+Evaluation:
+Span breakdown:
+a) ABC
+b) со зрительской аудиторией в 3,26 миллиона
+c) занял второе место
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) ABC занял второе место
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+b) с 3.26 тысячами зрителей
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 3,260 (3.26 тысяч).
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "3.26 million viewers".
+c) Correctly translates "was second".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) ABC занял второе место
+TERMINOLOGY: Appropriate. "ABC" is kept as is, and "второе место" is the correct term for "second" in rankings.
+b) с 3.26 тысячами зрителей
+TERMINOLOGY: Incorrect. "тысяч" (thousand) is used instead of "миллионов" (million).
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "зрительская аудитория" is the correct term for "viewers" in this context.
+c) "занял второе место" is an appropriate term for "was second" in rankings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) ABC занял второе место
+LINGUISTIC CONVENTIONS: Natural and grammatically correct.
+b) с 3.26 тысячами зрителей
+LINGUISTIC CONVENTIONS: The grammar is correct, but the numerical expression with "тысячами" is awkward.
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Russian sentence structure.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) ABC занял второе место
+AUDIENCE APPROPRIATENESS: Suitable for a Russian audience.
+b) с 3.26 тысячами зрителей
+AUDIENCE APPROPRIATENESS: The expression is understandable but not standard for ratings context.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Russian-speaking audience interested in TV ratings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation conveys the ranking correctly, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "3,26 миллиона зрителей" and adjusting the phrasing to
+something more natural like "ABC занял второе место с аудиторией в 3,26 миллиона зрителей."
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Russian.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% elif source_language == "English" and target_language == "Spanish" %}
+For example, consider the following two evaluations of translations from English
+into Spanish of the sentence "ABC was second with 3.26 million viewers."
+
+EVALUATION 1
+--------------------------------------------------------------------------------------
+Translation 1: ABC estaba segundo con 3.26 mil espectadores.
+Evaluation:
+The translation can be divided into two spans:
+
+a) ABC estaba segundo
+b) con 3.26 mil espectadores
+
+Evaluation:
+
+a) ABC estaba segundo
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+TERMINOLOGY: Appropriate. "ABC" is kept as is, but "segundo" is less preferred than "en segundo lugar" for rankings.
+LINGUISTIC CONVENTIONS: Somewhat unnatural. "Estaba" is grammatically correct but "quedó" would be more natural in this context.
+AUDIENCE APPROPRIATENESS: Understandable but could be more idiomatic.
+
+b) con 3.26 mil espectadores
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 3,260 (3.26 mil).
+TERMINOLOGY: Incorrect. "mil" (thousand) is used instead of "millones" (million).
+LINGUISTIC CONVENTIONS: The grammar is correct, but "espectadores" should be preceded by "de".
+AUDIENCE APPROPRIATENESS: The expression is comprehensible but not standard for ratings reports.
+
+HALLUCINATIONS: None detected.
+
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+
+Overall, while the translation conveys the ranking adequately, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "3.26 millones de espectadores" and adjusting the
+phrasing to something more natural like "ABC quedó en segundo lugar con 3.26
+millones de espectadores."
+
+EVALUATION 2
+--------------------------------------------------------------------------------------
+Translation 2: ABC quedó en segundo lugar con 3.26 millones de espectadores.
+Evaluation:
+Span breakdown:
+a) ABC quedó
+b) en segundo lugar
+c) con 3.26 millones de espectadores
+
+1) ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "was second".
+c) Correctly translates "3.26 million viewers".
+
+2) TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "En segundo lugar" is the preferred term for "second" in rankings.
+c) "Millones de espectadores" is the correct term for "million viewers".
+
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Spanish sentence structure.
+
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Spanish-speaking audience interested in TV ratings.
+
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Spanish.
+--------------------------------------------------------------------------------------
+<INTERLEAVED_EVALUATION>
+
+<DIV type="introduction">
+
+<EVALUATION number=1>
+Translation 1: ABC estaba segundo con 3.26 mil espectadores.
+Evaluation:
+The translation can be divided into two spans:
+a) ABC estaba segundo
+b) con 3.26 mil espectadores
+</EVALUATION>
+
+<EVALUATION number=2>
+Translation 2: ABC quedó en segundo lugar con 3.26 millones de espectadores.
+Evaluation:
+Span breakdown:
+a) ABC quedó
+b) en segundo lugar
+c) con 3.26 millones de espectadores
+</EVALUATION>
+
+</DIV>
+
+<DIV type="accuracy">
+
+<EVALUATION number=1>
+a) ABC estaba segundo
+ACCURACY: Good. This accurately conveys that ABC was in second place.
+
+b) con 3.26 mil espectadores
+ACCURACY: Poor. There's a significant error in the number of viewers. The
+original states 3.26 million, but the translation says 3,260 (3.26 mil).
+</EVALUATION>
+
+<EVALUATION number=2>
+1) ACCURACY:
+a) Accurate translation of "ABC".
+b) Accurately conveys "was second".
+c) Correctly translates "3.26 million viewers".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="terminology">
+
+<EVALUATION number=1>
+a) ABC estaba segundo
+TERMINOLOGY: Appropriate. "ABC" is kept as is, but "segundo" is less preferred than "en segundo lugar" for rankings.
+
+b) con 3.26 mil espectadores
+TERMINOLOGY: Incorrect. "mil" (thousand) is used instead of "millones" (million).
+</EVALUATION>
+
+<EVALUATION number=2>
+2) TERMINOLOGY:
+a) Correct use of "ABC" without translation, as it's a proper noun.
+b) "En segundo lugar" is the preferred term for "second" in rankings.
+c) "Millones de espectadores" is the correct term for "million viewers".
+</EVALUATION>
+
+</DIV>
+
+<DIV type="linguistic_conventions">
+
+<EVALUATION number=1>
+a) ABC estaba segundo
+LINGUISTIC CONVENTIONS: Somewhat unnatural. "Estaba" is grammatically correct but "quedó" would be more natural in this context.
+
+b) con 3.26 mil espectadores
+LINGUISTIC CONVENTIONS: The grammar is correct, but "espectadores" should be preceded by "de".
+</EVALUATION>
+
+<EVALUATION number=2>
+3) LINGUISTIC CONVENTIONS:
+The entire translation is grammatically correct and follows Spanish sentence structure.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="audience_appropriateness">
+
+<EVALUATION number=1>
+a) ABC estaba segundo
+AUDIENCE APPROPRIATENESS: Understandable but could be more idiomatic.
+
+b) con 3.26 mil espectadores
+AUDIENCE APPROPRIATENESS: The expression is comprehensible but not standard for ratings reports.
+</EVALUATION>
+
+<EVALUATION number=2>
+4) AUDIENCE APPROPRIATENESS:
+The translation uses terms and expressions that are familiar and appropriate for
+a Spanish-speaking audience interested in TV ratings.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="hallucinations">
+
+<EVALUATION number=1>
+HALLUCINATIONS: None detected.
+</EVALUATION>
+
+<EVALUATION number=2>
+5) HALLUCINATIONS:
+There are no hallucinations in this translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="missing_content">
+
+<EVALUATION number=1>
+MISSING CONTENT: No significant content is missing, but the mistranslation of
+the number of viewers results in a loss of accurate information.
+</EVALUATION>
+
+<EVALUATION number=2>
+6) MISSING CONTENT:
+No important information from the original text is missing in the translation.
+</EVALUATION>
+
+</DIV>
+
+<DIV type="summary">
+
+<EVALUATION number=1>
+Overall, while the translation conveys the ranking adequately, it fails to
+accurately represent the number of viewers, which is a crucial piece of
+information in the original text. The translation would be much improved by
+correcting the number to "3.26 millones de espectadores" and adjusting the
+phrasing to something more natural like "ABC quedó en segundo lugar con 3.26
+millones de espectadores."
+</EVALUATION>
+
+<EVALUATION number=2>
+Overall, this is an excellent translation that accurately conveys the original
+message while being natural and appropriate in Spanish.
+</EVALUATION>
+
+</DIV>
+
+</INTERLEAVED_EVALUATION>
+{% endif %}
+
+The source {{source_language}} text is "{{source_text}}".
+
+{{number}} translations and their evaluations follow:
+
+</INSTRUCTIONS>

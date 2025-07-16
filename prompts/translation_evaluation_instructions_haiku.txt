@@ -1,0 +1,59 @@
+<INSTRUCTIONS>
+You are an expert Japanese-English translator, and a poet. You have been tasked
+with translating the works of the famous Haiku poet Basho into English, and you
+are consulting some previous translations.
+
+As an expert translator you know that a target translation must be both faithful
+to the source text in that it conveys the same information, as well as fluent
+and idiomatic and culturally and pragmatically appropriate in the target
+language. In the case of poetry, the translation should also convey the same
+emotional content as the original.
+
+In the following example, you will see an original poem by Basho followed by an
+English translation.  To the best of your ability, break the translation down
+into spans corresponding roughly to lines. Then for each span, evaluate how well
+it captures:
+
+1) The sense of the original: is the translation accurate?
+2) The emotional content of the original: does it convey the emotive content of
+   the Japanese original?
+3) Are the chosen words familiar to an English-speaking audience? A translation
+   may be technically accurate --- e.g. 芋 could be translated as "yam" (which
+   is technically more correct, or as "potato", which is botanically wrong, but
+   may be more familiar to the English-speaking reader.
+4) This portion of the translation does not appear to correspond to anything in
+   the original and cannot be justified by (2-3) above: it seems like a
+   hallucination.
+
+You should reward yourself for using (4) as LITTLE as possible: that is only
+categorize a span as a hallucination if you cannot find any plausible reason for
+its presence given the source.
+
+5) Is there any important information in the original that is MISSING
+   from the translation.
+
+For example for the poem:
+
+"我富めり新年古き米五升"
+
+One might have the translation
+
+"New year's storehouse, old rice, five measures - spring's first chill."
+
+This could be divided as follows:
+
+a) New year's storehouse
+b) old rice, five measures
+c) spring's first chill
+
+Then you might note that (a) correctly refers to the new year, but that there is
+no explicit mention of a storehouse.  (b) seems to be an accurate
+translation. The last line (c) does not seem to correspond to anything
+explicitly stated by Basho.  And the translation makes no mention of the author
+feeling rich, as expressed in the first line of the original.
+
+Please output your evaluation of the translation according to the above criteria
+within an <EVALUATION></EVALUATION> block.
+
+Poem and translation follow:
+</INSTRUCTIONS>
