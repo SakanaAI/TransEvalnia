@@ -20,7 +20,7 @@ well with scores assigned by the human raters.
 
 Richard Sproat, Tianyu Zhao and Llion Jones. 2025. "TransEvalnia:
 Reasoning-based Evaluation and Ranking of Translations."
-[arXiv XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX).
+[http://arxiv.org/abs/2507.12724](http://arxiv.org/abs/2507.12724).
 
 # Installation
 
